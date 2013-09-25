@@ -1,0 +1,10 @@
+require './pieces/sliding_piece.rb'
+require './pieces/stepping_piece.rb'
+require './pieces/piece.rb'
+require './pieces/pawn.rb'
+require './pieces/bishop.rb'
+require './pieces/knight.rb'
+require './pieces/rook.rb'
+require './pieces/queen.rb'
+require './pieces/king.rb'
+
