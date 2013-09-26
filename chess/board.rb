@@ -1,10 +1,11 @@
 class Board
-  attr_accessor :grid
+  attr_accessor :grid, :turn
 
   def initialize
     @grid = Array.new(8) { Array.new(8) {} }
-
+    @turn = 1
     [:black, :white].each do |color|
+      other_pieces = [Rook, Knight, Bishop, King, Queen, Bishop, Knight, Rook]
       case color
       when :white
         pawn_row = 1
@@ -13,12 +14,14 @@ class Board
         pawn_row = 6
         other_row = 7
       end
+
       8.times do |col|
         @grid[pawn_row][col] = Pawn.new(color, [pawn_row, col] )
-        @grid[other_row] = [Rook, Knight, Bishop, King, Queen, Bishop, Knight, Rook].map do |klass|
-          klass.new(color, [other_row, col] )
-        end
+        @grid[other_row][col] = other_pieces[col].new(color, [other_row, col] )
       end
+
+
+
     end
 
   end
@@ -103,17 +106,116 @@ class Board
     #Marshal.load(Marshal.dump(self))
   end
 
-  def make_move(input, color, player)
+  def make_move(input, color)
     from_row, from_column, to_row, to_column = input
     piece = @grid[from_row][from_column]
-    if piece.nil? == false && piece.color == color && piece.valid_moves(self).include?([to_row, to_column])
-      @grid[from_row][from_column] = nil
-      @grid[to_row][to_column]= piece
-      piece.pos = [to_row, to_column]
-      return true
-    else
+    valids = piece.valid_moves(self)
+
+    if piece.nil?
       return false
     end
+    if piece.color != color
+      return false
+    end
+
+    if  !piece.is_a?(Pawn) && valids.include?([to_row, to_column])
+      update_board(piece, from_row, from_column, to_row, to_column)
+      return true
+    end
+
+    if piece.is_a?(Pawn)
+      valid_xys, en_pass = valids.map(&:first), valids.map(&:last)
+
+      if valid_xys.include?([to_row, to_column])
+
+        if en_pass[valid_xys.index([to_row, to_column])]
+          update_en_passant(piece, from_row, from_column, to_row, to_column)
+          return true
+        else
+          update_board(piece, from_row, from_column, to_row, to_column)
+          #Check for pawn promotion
+          if (piece.color == :white && piece.pos[0] == 7) || (piece.color == :black && piece.pos[0] == 0)
+            puts "The pawn gets promoted! Choose a promotion (Queen, Bishop, Knight, Rook)."
+            type = gets.chomp
+            @grid[piece.pos[0]][piece.pos[1]] = case type
+            when "Queen" then Queen.new(color, piece.pos)
+            when "Rook" then Rook.new(color, piece.pos)
+            when "Bishop" then Bishop.new(color, piece.pos)
+            when "Knight" then Knight.new(color, piece.pos)
+            end
+          end
+          return true
+        end
+      end
+    end
+    false
+  end
+
+  def update_en_passant(piece, from_row, from_column, to_row, to_column)
+    @grid[from_row][from_column] = nil
+    @grid[to_row][to_column]= piece
+    @grid[from_row][to_column] = nil #Delete pawn in passing
+    piece.pos = [to_row, to_column]
+    piece.no_times_moved += 1
+    piece.last_to_move = @turn
+    @turn += 1
+  end
+
+  def update_board(piece, from_row, from_column, to_row, to_column)
+    @grid[from_row][from_column] = nil
+    @grid[to_row][to_column]= piece
+    piece.pos = [to_row, to_column]
+    piece.last_to_move = @turn
+    piece.no_times_moved += 1
+    @turn += 1
+  end
+
+  def make_castling_move(side, color)
+    #black king [7,3]
+    #white king [0,3]
+    case color
+    when :black then king = @grid[7][3]
+      case side
+      when :king
+        rook = @grid[7][0]
+        between_squares = [[7,2], [7,1]]
+        #rook_end_pos = [7,2]
+      when :queen
+        rook = @grid[7][7]
+        between_squares = [[7,4], [7,5], [7,6]]
+        #rook_end_pos = [7,5]
+      end
+    when :white then king = @grid[0][3]
+      case side
+      when :king
+        rook = @grid[0][0]
+        between_squares = [[0,2], [0,1]]
+        #rook_end_pos = [0,2]
+      when :queen
+        rook = @grid[0][7]
+        between_squares = [[0,4], [0,5], [0,6]]
+        #rook_end_pos = [0,5]
+      end
+    end
+    rook_end_pos = between_squares[-2]
+
+    return nil if !(king.is_a?(King) && rook.is_a?(Rook) )
+    #Check neither have moved
+    return nil if king.no_times_moved != 0 || rook.no_times_moved != 0
+    #Check no pieces between them
+    between_squares.each do |square|
+      return nil if !@grid[square[0]][square[1]].nil?
+    end
+    #Check king is not in check
+    return nil if is_check?(color)
+    #Check the king does not pass through a square that is under enemy attack, and whether king would end up in check
+    between_squares.each { |square| return nil if !king.valid_move?(square, self) }
+
+    king_move = [king.pos[0], king.pos[1], between_squares.last[0], between_squares.last[1]]
+    rook_move = [rook.pos[0], rook.pos[1], rook_end_pos[0], rook_end_pos[1]]
+    update_board(king, *king_move)
+    update_board(rook, *rook_move)
+    true
   end
 
 end

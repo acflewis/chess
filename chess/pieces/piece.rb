@@ -1,9 +1,11 @@
 class Piece
-  attr_accessor :color, :sym, :pos
+  attr_accessor :color, :sym, :pos, :no_times_moved, :last_to_move
 
   def initialize(color, pos)
     @color = color
     @pos = pos
+    @no_times_moved = 0
+    @last_to_move = nil
   end
 
   def on_board?(row, col)
@@ -14,7 +16,8 @@ class Piece
     possible_moves = moves(board)
     valid_moves = []
     possible_moves.each do |poss_move|
-      valid_moves << poss_move if valid_move?(poss_move, board)
+      poss_move_xy = poss_move[0].is_a?(Array) ? poss_move[0] : poss_move
+      valid_moves << poss_move if valid_move?(poss_move_xy, board)
     end
     valid_moves
   end
