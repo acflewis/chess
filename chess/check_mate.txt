@@ -1,0 +1,297 @@
+--- !ruby/object:Game
+board: !ruby/object:Board
+  grid:
+  - - !ruby/object:Rook
+      color: :white
+      pos:
+      - 0
+      - 0
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♖
+    - !ruby/object:Knight
+      color: :white
+      pos:
+      - 0
+      - 1
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♘
+    - 
+    - !ruby/object:King
+      color: :white
+      pos:
+      - 0
+      - 3
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♔
+    - 
+    - !ruby/object:Bishop
+      color: :white
+      pos:
+      - 0
+      - 5
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♗
+    - !ruby/object:Knight
+      color: :white
+      pos:
+      - 0
+      - 6
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♘
+    - !ruby/object:Rook
+      color: :white
+      pos:
+      - 0
+      - 7
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♖
+  - - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 0
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♙
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 1
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♙
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 2
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♙
+    - 
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 4
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♙
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 5
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♙
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 6
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♙
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 7
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♙
+  - - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 
+    - 
+    - 
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 3
+      - 3
+      no_times_moved: 1
+      last_to_move: 1
+      sym: ♙
+    - 
+    - !ruby/object:Bishop
+      color: :white
+      pos:
+      - 3
+      - 5
+      no_times_moved: 1
+      last_to_move: 5
+      sym: ♗
+    - 
+    - 
+  - - !ruby/object:Queen
+      color: :white
+      pos:
+      - 4
+      - 0
+      no_times_moved: 1
+      last_to_move: 3
+      sym: ♕
+    - 
+    - 
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 4
+      - 3
+      no_times_moved: 1
+      last_to_move: 2
+      sym: ♟
+    - 
+    - 
+    - 
+    - 
+  - - 
+    - 
+    - !ruby/object:Knight
+      color: :black
+      pos:
+      - 5
+      - 2
+      no_times_moved: 1
+      last_to_move: 4
+      sym: ♞
+    - 
+    - 
+    - !ruby/object:Knight
+      color: :black
+      pos:
+      - 5
+      - 5
+      no_times_moved: 1
+      last_to_move: 6
+      sym: ♞
+    - 
+    - 
+  - - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 0
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♟
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 1
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♟
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 2
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♟
+    - 
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 4
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♟
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 5
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♟
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 6
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♟
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 7
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♟
+  - - !ruby/object:Rook
+      color: :black
+      pos:
+      - 7
+      - 0
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♜
+    - 
+    - !ruby/object:Bishop
+      color: :black
+      pos:
+      - 7
+      - 2
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♝
+    - !ruby/object:King
+      color: :black
+      pos:
+      - 7
+      - 3
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♚
+    - !ruby/object:Queen
+      color: :black
+      pos:
+      - 7
+      - 4
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♛
+    - !ruby/object:Bishop
+      color: :black
+      pos:
+      - 7
+      - 5
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♝
+    - 
+    - !ruby/object:Rook
+      color: :black
+      pos:
+      - 7
+      - 7
+      no_times_moved: 0
+      last_to_move: 
+      sym: ♜
+  turn: 7
+player1: &70351333658900 !ruby/object:Player
+  color: :white
+player2: !ruby/object:Player
+  color: :black
+current_player: *70351333658900

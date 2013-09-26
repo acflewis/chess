@@ -32,7 +32,7 @@ class Game
 
   def play_game_loop
 
-    until @board.is_check_mate?(:black) || @board.is_check_mate?(:white)
+    until game_over(@current_player.color) != false
       puts @board.to_s
       good_move = false
       until good_move
@@ -66,8 +66,7 @@ class Game
       end
       @current_player  = (@current_player == @player2 ? @player1 : @player2)
     end
-    @current_player  = (@current_player == @player2 ? @player1 : @player2)
-    puts "#{@current_player.color} wins!"
+    p game_over(@current_player.color)
   end
 
   def save
@@ -84,6 +83,22 @@ class Game
     YAML.load_file(filename).play_game_loop
   end
 
+  def game_over(color)
+    return "White wins!" if @board.is_check_mate?(:black)
+    return "Black wins!" if @board.is_check_mate?(:white)
+    return "Draw: Stalemate" if stale_mate(color)
+    false
+  end
+
+  def stale_mate(color)
+    #Color has no legal move, and is not in check
+    pieces = @board.find_pieces(color)
+    pieces.each do |piece|
+      return false if !piece.valid_moves(@board).empty?
+    end
+    return false if @board.is_check?(color)
+    true
+  end
 
 end
 

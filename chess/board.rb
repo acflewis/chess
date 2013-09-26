@@ -20,6 +20,11 @@ class Board
         @grid[other_row][col] = other_pieces[col].new(color, [other_row, col] )
       end
 
+#To demo stalemate
+# @grid[1][5] = King.new(:black, [1,5])
+# @grid[1][6] = Bishop.new(:black, [1,6])
+# @grid[1][7] = King.new(:white, [1,7])
+
 
 
     end
