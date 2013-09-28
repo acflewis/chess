@@ -14,6 +14,6 @@ module SteppingPiece
       end
     end
     possible_moves
-    end
+ end
 
 end

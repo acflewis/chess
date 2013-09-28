@@ -1,0 +1,264 @@
+--- !ruby/object:Game
+board: !ruby/object:Board
+  grid:
+  - - !ruby/object:Rook
+      color: :white
+      pos:
+      - 0
+      - 0
+      no_times_moved: 0
+      sym: ♖
+    - 
+    - 
+    - !ruby/object:King
+      color: :white
+      pos:
+      - 0
+      - 3
+      no_times_moved: 0
+      sym: ♔
+    - !ruby/object:Queen
+      color: :white
+      pos:
+      - 0
+      - 4
+      no_times_moved: 0
+      sym: ♕
+    - !ruby/object:Bishop
+      color: :white
+      pos:
+      - 0
+      - 5
+      no_times_moved: 0
+      sym: ♗
+    - !ruby/object:Knight
+      color: :white
+      pos:
+      - 0
+      - 6
+      no_times_moved: 0
+      sym: ♘
+    - !ruby/object:Rook
+      color: :white
+      pos:
+      - 0
+      - 7
+      no_times_moved: 0
+      sym: ♖
+  - - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 0
+      no_times_moved: 0
+      sym: ♙
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 1
+      no_times_moved: 0
+      sym: ♙
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 2
+      no_times_moved: 0
+      sym: ♙
+    - 
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 4
+      no_times_moved: 0
+      sym: ♙
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 5
+      no_times_moved: 0
+      sym: ♙
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 6
+      no_times_moved: 0
+      sym: ♙
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 1
+      - 7
+      no_times_moved: 0
+      sym: ♙
+  - - 
+    - 
+    - !ruby/object:Knight
+      color: :white
+      pos:
+      - 2
+      - 2
+      no_times_moved: 1
+      sym: ♘
+    - 
+    - !ruby/object:Bishop
+      color: :white
+      pos:
+      - 2
+      - 4
+      no_times_moved: 1
+      sym: ♗
+    - 
+    - 
+    - 
+  - - 
+    - 
+    - 
+    - !ruby/object:Pawn
+      color: :white
+      pos:
+      - 3
+      - 3
+      no_times_moved: 1
+      sym: ♙
+    - 
+    - 
+    - 
+    - 
+  - - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 4
+      - 6
+      no_times_moved: 1
+      sym: ♟
+    - 
+  - - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - !ruby/object:Knight
+      color: :black
+      pos:
+      - 5
+      - 7
+      no_times_moved: 1
+      sym: ♞
+  - - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 0
+      no_times_moved: 0
+      sym: ♟
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 1
+      no_times_moved: 0
+      sym: ♟
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 2
+      no_times_moved: 0
+      sym: ♟
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 3
+      no_times_moved: 0
+      sym: ♟
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 4
+      no_times_moved: 0
+      sym: ♟
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 5
+      no_times_moved: 0
+      sym: ♟
+    - !ruby/object:Bishop
+      color: :black
+      pos:
+      - 6
+      - 6
+      no_times_moved: 1
+      sym: ♝
+    - !ruby/object:Pawn
+      color: :black
+      pos:
+      - 6
+      - 7
+      no_times_moved: 0
+      sym: ♟
+  - - !ruby/object:Rook
+      color: :black
+      pos:
+      - 7
+      - 0
+      no_times_moved: 0
+      sym: ♜
+    - !ruby/object:Knight
+      color: :black
+      pos:
+      - 7
+      - 1
+      no_times_moved: 0
+      sym: ♞
+    - !ruby/object:Bishop
+      color: :black
+      pos:
+      - 7
+      - 2
+      no_times_moved: 0
+      sym: ♝
+    - !ruby/object:King
+      color: :black
+      pos:
+      - 7
+      - 3
+      no_times_moved: 0
+      sym: ♚
+    - !ruby/object:Queen
+      color: :black
+      pos:
+      - 7
+      - 4
+      no_times_moved: 0
+      sym: ♛
+    - 
+    - 
+    - !ruby/object:Rook
+      color: :black
+      pos:
+      - 7
+      - 7
+      no_times_moved: 0
+      sym: ♜
+player1: &70172799017400 !ruby/object:Player
+  color: :white
+player2: !ruby/object:Player
+  color: :black
+current_player: *70172799017400

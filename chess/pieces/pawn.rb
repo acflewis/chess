@@ -12,12 +12,12 @@ class Pawn < Piece
     possible_moves = []
 
     case @color
-    when :white
+    when :black
       pawn_row = 1
       one_move_row = 2
       two_move_row = 3
       next_row = row+1
-    when :black
+    when :white
       pawn_row = 6
       one_move_row = 5
       two_move_row = 4
